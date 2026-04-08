@@ -216,15 +216,12 @@ services:
     restart: unless-stopped
 
   xtts:
-    image: ghcr.io/coqui-ai/xtts-streaming-server
+    image: ghcr.io/coqui-ai/xtts-streaming-server:latest-cpu
     container_name: xtts-server
     ports:
       - "8000:80"
     environment:
       COQUI_TOS_AGREED: "1"
-      CUDA_VISIBLE_DEVICES: "-1"
-      NVIDIA_VISIBLE_DEVICES: "void"
-
     restart: unless-stopped
 
 volumes:

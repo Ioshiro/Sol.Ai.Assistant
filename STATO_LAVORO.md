@@ -159,7 +159,8 @@ Effetto:
 - non copre sinonimi o richieste operative senza la parola chiave
 
 ### Rischio 5: XTTS in modalità CPU
-Il servizio XTTS nel compose usa l'immagine CPU compatibile per evitare dipendenze NVIDIA sul host corrente.
+### Rischio 5: XTTS in modalità CPU
+Il servizio XTTS nel compose usa l'immagine CPU compatibile `latest-cpu` per evitare dipendenze NVIDIA sul host corrente.
 
 Effetto:
 - il compose parte anche su host senza GPU NVIDIA
@@ -171,7 +172,7 @@ Effetto:
 - **Stato**: il backend stack è ora riproducibile con Docker Compose
 - **Servizio .NET**: presente, compilato, esposto su porta 5077 nel compose
 - **Ollama**: aggiunto come upstream locale con pull automatico del modello
-- **XTTS**: incluso nel compose in versione CPU compatibile; la variante GPU richiede override separato
+- **XTTS**: incluso nel compose in versione CPU compatibile `latest-cpu`; la variante GPU richiede override separato
 - **Langfuse**: stack self-hosted incluso e tracing attivo sui bot Pipecat e sul servizio .NET, con chiavi centralizzate in `.env`
 
 - **Client Python**: presenti e usabili, ma senza packaging dichiarato
