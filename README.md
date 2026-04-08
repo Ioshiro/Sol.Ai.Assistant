@@ -102,7 +102,7 @@ Comandi utili nella console:
 - `bot.py` usa Whisper `medium` su CPU e Kokoro TTS
 - `bot_cuda.py` usa Whisper `large-v3-turbo` su CUDA e Kokoro TTS
 - `bot_xtts.py` usa Whisper `large-v3-turbo` e XTTS
-- XTTS nel compose corrente richiede GPU NVIDIA
+- XTTS nel compose corrente usa l'immagine CPU compatibile; se vuoi una variante GPU devi aggiungere un override dedicato
 - Langfuse è self-hosted e inizializzato con chiavi demo locali nel compose
 - `SolAI.Pipecat.LLMService` esporta trace OpenTelemetry/OTLP direttamente su Langfuse
 

@@ -221,19 +221,12 @@ services:
     restart: unless-stopped
 
   xtts:
-    image: ghcr.io/coqui-ai/xtts-streaming-server:latest-cuda121
+    image: ghcr.io/coqui-ai/xtts-streaming-server
     container_name: xtts-server
     ports:
       - "8000:80"
     environment:
       COQUI_TOS_AGREED: "1"
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
     restart: unless-stopped
 
 volumes:

@@ -159,12 +159,12 @@ Effetto:
 - può attivare tool anche quando non serve
 - non copre sinonimi o richieste operative senza la parola chiave
 
-### Rischio 5: XTTS richiede GPU per il profilo attuale
-Il servizio XTTS nel compose usa l'immagine CUDA e la reservation GPU NVIDIA.
+### Rischio 5: XTTS in modalità CPU
+Il servizio XTTS nel compose usa l'immagine CPU compatibile per evitare dipendenze NVIDIA sul host corrente.
 
 Effetto:
-- su host senza GPU NVIDIA il container potrebbe non essere avviabile così com'è
-- in quel caso serve un profilo alternativo CPU o un override dedicato
+- il compose parte anche su host senza GPU NVIDIA
+- se serve la variante GPU, va introdotto un override dedicato separato
 
 
 ## 5) Riepilogo operativo
@@ -172,7 +172,7 @@ Effetto:
 - **Stato**: il backend stack è ora riproducibile con Docker Compose
 - **Servizio .NET**: presente, compilato, esposto su porta 5077 nel compose
 - **Ollama**: aggiunto come upstream locale con pull automatico del modello
-- **XTTS**: incluso nel compose, ma resta legato al supporto GPU del container scelto
+- **XTTS**: incluso nel compose in versione CPU compatibile; la variante GPU richiede override separato
 - **Langfuse**: stack self-hosted incluso e tracing attivo sui bot Pipecat e sul servizio .NET
 
 - **Client Python**: presenti e usabili, ma senza packaging dichiarato
