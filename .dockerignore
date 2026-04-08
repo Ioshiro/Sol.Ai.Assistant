@@ -1,0 +1,9 @@
+.git
+.vs
+**/bin
+**/obj
+**/__pycache__
+**/*.pyc
+.venv
+python-3.13.0-embed-amd64/
+STATO_LAVORO.md

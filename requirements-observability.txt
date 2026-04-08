@@ -1,0 +1,3 @@
+# Dependencies needed for Langfuse OTLP tracing in the Pipecat bots
+opentelemetry-sdk
+opentelemetry-exporter-otlp-proto-http

@@ -1,0 +1,85 @@
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.code-workspace
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# --- Claude / local agent state ---
+.claude/
+
+# --- .NET / Visual Studio ---
+.vs/
+[Bb]in/
+[Oo]bj/
+TestResults/
+artifacts/
+coverage/
+CoverageReport/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.venv/
+venv/
+env/
+ENV/
+.python-version
+pip-wheel-metadata/
+*.egg-info/
+build/
+dist/
+site/
+
+# --- Python packaging / lockfiles (uncomment if you keep them local only) ---
+# poetry.lock
+# uv.lock
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Env / secrets ---
+.env
+.env.*
+!.env.example
+*.local
+
+# --- Docker / local runtime ---
+*.pid
+*.seed
+*.sqlite
+*.sqlite3
+
+# --- Project-specific local runtime artifacts ---
+python-3.13.0-embed-amd64/
