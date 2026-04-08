@@ -1,6 +1,6 @@
 using System.Diagnostics;
-using System.Text.Json;
 using System.Text.Json.Serialization;
+using OpenTelemetry.Exporter;
 using OpenTelemetry.Trace;
 using SolAI.Pipecat.LLMService.Contracts;
 using SolAI.Pipecat.LLMService.Options;
@@ -19,11 +19,21 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 builder.Services.AddOpenTelemetry()
     .WithTracing(tracing =>
     {
+        var langfuseHost = builder.Configuration["LANGFUSE_HOST"] ?? "http://localhost:3000";
+        var publicKey = builder.Configuration["LANGFUSE_PUBLIC_KEY"] ?? "lf_pk_local_demo";
+        var secretKey = builder.Configuration["LANGFUSE_SECRET_KEY"] ?? "lf_sk_local_demo";
+        var auth = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes($"{publicKey}:{secretKey}"));
+
         tracing
             .AddAspNetCoreInstrumentation()
             .AddHttpClientInstrumentation()
             .AddSource(SemanticKernelOpenAIChatGateway.ActivitySourceName)
-            .AddOtlpExporter();
+            .AddOtlpExporter(options =>
+            {
+                options.Endpoint = new Uri($"{langfuseHost.TrimEnd('/')}/api/public/otel");
+                options.Protocol = OtlpExportProtocol.HttpProtobuf;
+                options.Headers = $"Authorization=Basic {auth}";
+            });
     });
 
 builder.Services

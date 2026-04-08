@@ -116,8 +116,7 @@ Note pratiche:
 ## 3) Cosa manca / TODO
 
 ### Mancanze strutturali
-- Aggiunto un `README.md` di quickstart; resta da completare un manifest Python completo (`requirements.txt`, `pyproject.toml` o equivalente) per l'intero ambiente.
-- Manca una **suite di test automatizzati** nel repository.
+- Aggiunto un `README.md` di quickstart e `.env.example`; resta da completare un manifest Python completo (`requirements.txt`, `pyproject.toml` o equivalente) per l'intero ambiente.
 
 ### TODO funzionali
 - Rendere configurabili in modo esplicito gli endpoint di upstream LLM e TTS per evitare dipendenze ambientali nascoste.
@@ -173,7 +172,7 @@ Effetto:
 - **Servizio .NET**: presente, compilato, esposto su porta 5077 nel compose
 - **Ollama**: aggiunto come upstream locale con pull automatico del modello
 - **XTTS**: incluso nel compose in versione CPU compatibile; la variante GPU richiede override separato
-- **Langfuse**: stack self-hosted incluso e tracing attivo sui bot Pipecat e sul servizio .NET
+- **Langfuse**: stack self-hosted incluso e tracing attivo sui bot Pipecat e sul servizio .NET, con chiavi centralizzate in `.env`
 
 - **Client Python**: presenti e usabili, ma senza packaging dichiarato
 - **Priorità consigliata**: 1) packaging Python completo, 2) profilo XTTS CPU opzionale, 3) test minimi

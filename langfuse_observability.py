@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import base64
 import os
+from pathlib import Path
 
 
 DEFAULT_LANGFUSE_HOST = "http://localhost:3000"
@@ -18,6 +19,28 @@ def _set_default(name: str, value: str) -> str:
 
     os.environ[name] = value
     return value
+
+
+def _load_env_file(path: Path) -> None:
+    if not path.exists():
+        return
+
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = value
+
+
+def _ensure_project_env() -> None:
+    project_root = Path(__file__).resolve().parent
+    _load_env_file(project_root / ".env")
+    _load_env_file(project_root.parent / ".env")
 
 
 def configure_pipecat_langfuse(service_name: str) -> None:
@@ -37,6 +60,8 @@ def configure_pipecat_langfuse(service_name: str) -> None:
         raise RuntimeError(
             "Missing tracing dependencies. Install requirements-observability.txt before running the Pipecat bots."
         ) from exc
+
+    _ensure_project_env()
 
     host = _set_default("LANGFUSE_HOST", DEFAULT_LANGFUSE_HOST).rstrip("/")
     public_key = _set_default("LANGFUSE_PUBLIC_KEY", DEFAULT_LANGFUSE_PUBLIC_KEY)

@@ -34,6 +34,13 @@ Il primo avvio può richiedere tempo perché:
 - Langfuse inizializza il proprio stack (Postgres, ClickHouse, Redis, MinIO)
 - `ollama-pull` scarica il modello definito in `OLLAMA_MODEL`
 
+### Configurazione centralizzata delle chiavi Langfuse
+- copia `.env.example` in `.env`
+- inserisci lì `LANGFUSE_HOST`, `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`
+- `docker compose` legge automaticamente `.env`
+- il helper Python legge automaticamente `.env` se lanci i bot fuori da Docker
+
+
 ## Avvio del servizio .NET in locale
 
 ```bash
