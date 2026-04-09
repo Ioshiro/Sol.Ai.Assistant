@@ -239,6 +239,8 @@ services:
       - "9443:9443"
       - "9543:9543"
       - "9643:9643"
+    environment:
+      HTTPS_HOST: ${HTTPS_HOST:-localhost}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
