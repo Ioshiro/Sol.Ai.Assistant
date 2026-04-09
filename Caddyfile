@@ -1,0 +1,19 @@
+{$HTTPS_HOST}:8443 {
+	tls internal
+	reverse_proxy host.docker.internal:7860
+}
+
+{$HTTPS_HOST}:9443 {
+	tls internal
+	reverse_proxy langfuse-web:3000
+}
+
+{$HTTPS_HOST}:9543 {
+	tls internal
+	reverse_proxy llmservice:8080
+}
+
+{$HTTPS_HOST}:9643 {
+	tls internal
+	reverse_proxy xtts:80
+}

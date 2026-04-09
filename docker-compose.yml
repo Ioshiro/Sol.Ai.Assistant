@@ -224,11 +224,35 @@ services:
       COQUI_TOS_AGREED: "1"
     restart: unless-stopped
 
+  caddy:
+    image: caddy:2
+    container_name: solai-caddy
+    depends_on:
+      langfuse-web:
+        condition: service_healthy
+      llmservice:
+        condition: service_started
+      xtts:
+        condition: service_started
+    ports:
+      - "8443:8443"
+      - "9443:9443"
+      - "9543:9543"
+      - "9643:9643"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
 volumes:
   langfuse_postgres_data:
-
   langfuse_clickhouse_data:
   langfuse_clickhouse_logs:
   langfuse_minio_data:
   langfuse_redis_data:
   ollama_data:
+  caddy_data:
+  caddy_config:
