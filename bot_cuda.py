@@ -23,7 +23,8 @@ from pipecat.processors.aggregators.llm_response_universal import (
     LLMUserAggregatorParams,
 )
 
-from pipecat.services.openai.llm import OpenAILLMService, OpenAILLMSettings
+from pipecat.services.openai.llm import OpenAILLMService
+from pipecat.services.openai.base_llm import OpenAILLMSettings
 from pipecat.services.whisper.stt import WhisperSTTService, WhisperSTTSettings, Model
 from pipecat.transcriptions.language import Language
 from pipecat.services.kokoro.tts import KokoroTTSService, KokoroTTSSettings

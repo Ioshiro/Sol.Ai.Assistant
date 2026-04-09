@@ -22,7 +22,8 @@ from pipecat.processors.aggregators.llm_response_universal import (
 )
 from pipecat.processors.frameworks.rtvi import RTVIConfig, RTVIProcessor
 from pipecat.runner.types import RunnerArguments
-from pipecat.services.openai.llm import OpenAILLMService, OpenAILLMSettings
+from pipecat.services.openai.llm import OpenAILLMService
+from pipecat.services.openai.base_llm import OpenAILLMSettings
 from pipecat.services.whisper.stt import WhisperSTTService, WhisperSTTSettings
 from pipecat.services.xtts.tts import XTTSService
 from pipecat.transcriptions.language import Language
