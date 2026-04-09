@@ -1,0 +1,23 @@
+# Runtime dependencies for the Pipecat bots
+# Install with:
+#   pip install -r requirements-bots.txt
+
+pipecat-ai
+loguru
+fastapi
+uvicorn
+websockets
+aiohttp
+opencv-python
+numpy
+Pillow
+sounddevice
+webrtcvad
+pydub
+# Torch is required at runtime by some Pipecat pipelines and audio/model stacks.
+# Install a CPU wheel unless you specifically need CUDA.
+torch
+
+# Langfuse/OpenTelemetry tracing support
+opentelemetry-sdk
+opentelemetry-exporter-otlp-proto-http

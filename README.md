@@ -15,7 +15,6 @@ Stack di test per Sol AI + Pipecat + Langfuse.
 
 Prerequisiti:
 - Docker Desktop / Docker Engine
-- NVIDIA GPU driver se vuoi usare il servizio XTTS così com'è
 
 Avvio:
 
@@ -35,11 +34,11 @@ Il primo avvio può richiedere tempo perché:
 - `ollama-pull` scarica il modello definito in `OLLAMA_MODEL`
 
 ### Configurazione centralizzata delle chiavi Langfuse
+
 - copia `.env.example` in `.env`
 - inserisci lì `LANGFUSE_HOST`, `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`
 - `docker compose` legge automaticamente `.env`
 - il helper Python legge automaticamente `.env` se lanci i bot fuori da Docker
-
 
 ## Avvio del servizio .NET in locale
 
@@ -57,10 +56,10 @@ Request sample:
 
 ## Uso dei bot Pipecat
 
-Prima di eseguire i bot, installa i package di tracing:
+Prima di eseguire i bot, installa i package runtime e di tracing:
 
 ```bash
-pip install -r requirements-observability.txt
+pip install -r requirements-bots.txt
 ```
 
 I bot usano tracing Langfuse OTLP tramite `langfuse_observability.py`.
@@ -112,11 +111,12 @@ Comandi utili nella console:
 - XTTS nel compose corrente usa l'immagine CPU compatibile; se vuoi una variante GPU devi aggiungere un override dedicato
 - Langfuse è self-hosted e inizializzato con chiavi demo locali nel compose
 - `SolAI.Pipecat.LLMService` esporta trace OpenTelemetry/OTLP direttamente su Langfuse
-
+- Se `python bot.py` fallisce con moduli mancanti, installa prima l'ambiente Python del progetto usando `requirements-bots.txt`
 
 ## File utili
 
 - `docker-compose.yml`
 - `langfuse_observability.py`
+- `requirements-bots.txt`
 - `requirements-observability.txt`
 - `STATO_LAVORO.md`
