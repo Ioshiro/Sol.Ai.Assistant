@@ -1,4 +1,4 @@
-﻿import os
+import os
 from langfuse_observability import configure_pipecat_langfuse
 configure_pipecat_langfuse("bot-xtts")
 
@@ -32,12 +32,11 @@ from pipecat.transports.smallwebrtc.transport import SmallWebRTCTransport
 
 
 LMSTUDIO_BASE_URL = "http://127.0.0.1:1234/v1"
-#LMSTUDIO_BASE_URL = "http://localhost:5077/v1"
-# LMSTUDIO_MODEL = "qwen3.5-4b"  # <-- cambia col tuo model id
-# LMSTUDIO_MODEL = "gpt-oss-20b"
-# LMSTUDIO_MODEL = "gemma-3-4b-it"
-# LMSTUDIO_MODEL = "llama-3.2-3b-instruct"
-LMSTUDIO_MODEL = "google/gemma-3-4b"
+#LMSTUDIO_MODEL = "qwen3.5-4b"  # <-- cambia col tuo model id
+#LMSTUDIO_MODEL = "gpt-oss-20b"
+#LMSTUDIO_MODEL = "gemma-3-4b-it"
+#LMSTUDIO_MODEL = "llama-3.2-3b-instruct"
+LMSTUDIO_MODEL = "gemma4:e4b"
 WHISPER_MODEL = "large-v3-turbo"
 XTTS_BASE_URL = os.getenv("XTTS_BASE_URL", "http://localhost:8000")
 XTTS_VOICE_ID = os.getenv("XTTS_VOICE_ID", "Ana Florence")

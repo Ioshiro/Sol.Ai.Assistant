@@ -185,7 +185,7 @@ services:
         condition: service_healthy
     environment:
       OLLAMA_HOST: http://ollama:11434
-      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5:3b}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-gemma4:e4b}
     volumes:
       - ollama_data:/root/.ollama
     entrypoint: ["sh", "-lc", "ollama pull \"$$OLLAMA_MODEL\""]
@@ -208,8 +208,8 @@ services:
       ASPNETCORE_URLS: http://+:8080
       LlmService__UpstreamEndpoint: http://ollama:11434/v1
       LlmService__ApiKey: ollama
-      LlmService__DefaultModel: ${OLLAMA_MODEL:-qwen2.5:3b}
-      LlmService__AvailableModels__0: ${OLLAMA_MODEL:-qwen2.5:3b}
+      LlmService__DefaultModel: ${OLLAMA_MODEL:-gemma4:e4b}
+      LlmService__AvailableModels__0: ${OLLAMA_MODEL:-gemma4:e4b}
       LANGFUSE_HOST: ${LANGFUSE_HOST:-http://langfuse-web:3000}
       LANGFUSE_PUBLIC_KEY: ${LANGFUSE_PUBLIC_KEY:-lf_pk_local_demo}
       LANGFUSE_SECRET_KEY: ${LANGFUSE_SECRET_KEY:-lf_sk_local_demo}

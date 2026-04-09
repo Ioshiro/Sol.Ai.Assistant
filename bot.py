@@ -1,4 +1,4 @@
-﻿from loguru import logger
+from loguru import logger
 from langfuse_observability import configure_pipecat_langfuse
 configure_pipecat_langfuse("bot-cpu")
 
@@ -39,7 +39,7 @@ LMSTUDIO_BASE_URL = "http://localhost:5077/v1"
 #LMSTUDIO_MODEL = "gpt-oss-20b"
 #LMSTUDIO_MODEL = "gemma-3-4b-it"
 #LMSTUDIO_MODEL = "llama-3.2-3b-instruct"
-LMSTUDIO_MODEL = "qwen/qwen3-8b"
+LMSTUDIO_MODEL = "gemma4:e4b"
 PIPER_VOICE_ID = "it_IT-riccardo-x_low"
 #WHISPER_MODEL = "large-v3-turbo"
 WHISPER_MODEL = "medium"
